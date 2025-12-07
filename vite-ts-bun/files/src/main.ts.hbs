@@ -1,0 +1,23 @@
+{{#if use_tailwind}}
+import './style.css'
+{{else}}
+import './style.css'
+{{/if}}
+
+document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
+    <div class="container">
+        <h1>Welcome to {{project_name}}</h1>
+        <p>{{description}}</p>
+        <div class="card">
+            <button id="counter" type="button">Count is 0</button>
+        </div>
+    </div>
+    `
+
+    const counter = document.querySelector<HTMLButtonElement>('#counter')!
+        let count = 0
+
+        counter.addEventListener('click', () => {
+        count++
+        counter.textContent = `Count is ${count}`
+        })

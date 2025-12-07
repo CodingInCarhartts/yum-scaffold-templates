@@ -1,0 +1,23 @@
+# {{project_name}}
+
+{{description}}
+
+## Setup
+
+```bash
+# Build the project
+cargo build
+
+# Run the project
+cargo run -- --name "Rustacean" --count 3
+```
+
+## Features
+
+- **Tokio**: Async runtime
+- **Serde**: Serialization/Deserialization
+- **Clap**: Command line argument parsing
+- **Anyhow**: Error handling
+{{#if add_logging}}
+- **Env Logger**: Logging
+{{/if}}

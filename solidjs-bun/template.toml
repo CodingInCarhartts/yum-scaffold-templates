@@ -1,0 +1,78 @@
+[metadata]
+name = "solidjs-bun"
+description = "SolidStart with Bun, TypeScript, Tailwind, and Solid UI"
+version = "1.0.0"
+author = "Scaffold-CLI"
+tags = ["solid", "solidstart", "typescript", "bun", "tailwind"]
+
+[variables.project_name]
+prompt = "Project name"
+type = "string"
+default = "my-solid-app"
+required = true
+
+[variables.description]
+prompt = "Project description"
+type = "string"
+default = "A SolidStart application"
+required = false
+
+[[files]]
+source = "package.json.hbs"
+destination = "{{project_name}}/package.json"
+
+[[files]]
+source = "tsconfig.json.hbs"
+destination = "{{project_name}}/tsconfig.json"
+
+[[files]]
+source = "app.config.ts.hbs"
+destination = "{{project_name}}/app.config.ts"
+
+[[files]]
+source = "tailwind.config.js.hbs"
+destination = "{{project_name}}/tailwind.config.js"
+
+[[files]]
+source = "postcss.config.js.hbs"
+destination = "{{project_name}}/postcss.config.js"
+
+[[files]]
+source = ".gitignore.hbs"
+destination = "{{project_name}}/.gitignore"
+
+[[files]]
+source = "src/app.tsx.hbs"
+destination = "{{project_name}}/src/app.tsx"
+
+[[files]]
+source = "src/app.css.hbs"
+destination = "{{project_name}}/src/app.css"
+
+[[files]]
+source = "src/entry-client.tsx.hbs"
+destination = "{{project_name}}/src/entry-client.tsx"
+
+[[files]]
+source = "src/entry-server.tsx.hbs"
+destination = "{{project_name}}/src/entry-server.tsx"
+
+[[files]]
+source = "src/routes/index.tsx.hbs"
+destination = "{{project_name}}/src/routes/index.tsx"
+
+[[files]]
+source = "src/components/ui/button.tsx.hbs"
+destination = "{{project_name}}/src/components/ui/button.tsx"
+
+[[hooks]]
+command = "bun"
+args = ["install"]
+working_dir = "{{project_name}}"
+description = "Installing dependencies"
+
+[[hooks]]
+command = "git"
+args = ["init"]
+working_dir = "{{project_name}}"
+description = "Initializing git repository"

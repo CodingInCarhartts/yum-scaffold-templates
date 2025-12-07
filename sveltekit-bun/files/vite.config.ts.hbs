@@ -1,0 +1,10 @@
+import { sveltekit } from '@sveltejs/kit/vite';
+import { defineConfig } from 'vite';
+{{#if use_tailwind}}import tailwindcss from '@tailwindcss/vite';{{/if}}
+
+export default defineConfig({
+	plugins: [
+		sveltekit(){{#if use_tailwind}},
+		tailwindcss(){{/if}}
+	]
+});

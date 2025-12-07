@@ -1,0 +1,50 @@
+use anyhow::Result;
+use clap::Parser;
+use serde::{Deserialize, Serialize};
+
+#[derive(Parser, Debug)]
+#[command(author, version, about, long_about = None)]
+struct Args {
+    /// Name of the person to greet
+    #[arg(short, long, default_value = "World")]
+    name: String,
+
+    /// Count of greetings
+    #[arg(short, long, default_value_t = 1)]
+    count: u8,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+struct Message {
+    content: String,
+    timestamp: String,
+}
+
+#[tokio::main]
+async fn main() -> Result<()> {
+    {{#if add_logging}}
+    env_logger::init();
+    {{/if}}
+
+    let args = Args::parse();
+
+    {{#if add_logging}}
+    log::info!("Starting application with args: {:?}", args);
+    {{/if}}
+
+    for _ in 0..args.count {
+        let msg = Message {
+            content: format!("Hello, {}!", args.name),
+            timestamp: chrono::Utc::now().to_rfc3339(),
+        };
+
+        // Demonstrate serde_json serialization
+        let json = serde_json::to_string_pretty(&msg)?;
+        println!("{}", json);
+        
+        // Demonstrate async sleep
+        tokio::time::sleep(tokio::time::Duration::from_millis(100)).await;
+    }
+
+    Ok(())
+}

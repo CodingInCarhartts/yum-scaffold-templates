@@ -1,0 +1,68 @@
+<script lang="ts">
+	let count = $state(0);
+	
+	function increment() {
+		count++;
+	}
+</script>
+
+<svelte:head>
+	<title>{{project_name}}</title>
+	<meta name="description" content="{{description}}" />
+</svelte:head>
+
+<main class="{{#if use_tailwind}}min-h-screen flex flex-col items-center justify-center p-8{{else}}container{{/if}}">
+	<h1 class="{{#if use_tailwind}}text-4xl font-bold mb-4{{else}}title{{/if}}">Welcome to {{project_name}}</h1>
+	<p class="{{#if use_tailwind}}text-gray-600 mb-8{{else}}subtitle{{/if}}">{{description}}</p>
+	
+	<div class="{{#if use_tailwind}}space-y-4{{else}}counter{{/if}}">
+		<p class="{{#if use_tailwind}}text-2xl{{else}}count{{/if}}">Count: {count}</p>
+		<button 
+			onclick={increment}
+			class="{{#if use_tailwind}}px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors{{else}}btn{{/if}}"
+		>
+			Increment
+		</button>
+	</div>
+</main>
+
+{{#unless use_tailwind}}
+<style>
+	.container {
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 2rem;
+	}
+	.title {
+		font-size: 2.5rem;
+		font-weight: bold;
+		margin-bottom: 1rem;
+	}
+	.subtitle {
+		color: #666;
+		margin-bottom: 2rem;
+	}
+	.counter {
+		text-align: center;
+	}
+	.count {
+		font-size: 1.5rem;
+		margin-bottom: 1rem;
+	}
+	.btn {
+		padding: 0.5rem 1.5rem;
+		background-color: var(--color-primary);
+		color: white;
+		border: none;
+		border-radius: 0.5rem;
+		font-size: 1rem;
+		cursor: pointer;
+	}
+	.btn:hover {
+		opacity: 0.9;
+	}
+</style>
+{{/unless}}

@@ -1,0 +1,30 @@
+# {{project_name}}
+
+{{description}}
+
+## Setup
+
+```bash
+# Create virtual environment and install dependencies
+uv venv
+uv sync
+```
+
+## Usage
+
+```bash
+# Run the application
+uv run {{project_name}}
+
+# Or activate venv and run directly
+source .venv/bin/activate
+python -m {{project_name}}.main
+```
+
+{{#if use_pytest}}
+## Testing
+
+```bash
+uv run pytest
+```
+{{/if}}

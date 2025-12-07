@@ -1,0 +1,85 @@
+[metadata]
+name = "sveltekit-bun"
+description = "SvelteKit with Bun, Svelte 5, and TypeScript"
+version = "1.0.0"
+author = "Scaffold-CLI"
+tags = ["svelte", "sveltekit", "typescript", "bun"]
+
+[variables.project_name]
+prompt = "Project name"
+type = "string"
+default = "my-svelte-app"
+required = true
+
+[variables.description]
+prompt = "Project description"
+type = "string"
+default = "A SvelteKit application"
+required = false
+
+[variables.use_tailwind]
+prompt = "Include Tailwind CSS?"
+type = "boolean"
+default = true
+
+[[files]]
+source = "package.json.hbs"
+destination = "{{project_name}}/package.json"
+
+[[files]]
+source = "tsconfig.json.hbs"
+destination = "{{project_name}}/tsconfig.json"
+
+[[files]]
+source = "svelte.config.js.hbs"
+destination = "{{project_name}}/svelte.config.js"
+
+[[files]]
+source = "vite.config.ts.hbs"
+destination = "{{project_name}}/vite.config.ts"
+
+[[files]]
+source = ".gitignore.hbs"
+destination = "{{project_name}}/.gitignore"
+
+[[files]]
+source = "src/app.html.hbs"
+destination = "{{project_name}}/src/app.html"
+
+[[files]]
+source = "src/app.css.hbs"
+destination = "{{project_name}}/src/app.css"
+
+[[files]]
+source = "src/app.d.ts.hbs"
+destination = "{{project_name}}/src/app.d.ts"
+
+[[files]]
+source = "src/routes/+page.svelte.hbs"
+destination = "{{project_name}}/src/routes/+page.svelte"
+
+[[files]]
+source = "src/routes/+layout.svelte.hbs"
+destination = "{{project_name}}/src/routes/+layout.svelte"
+
+[[files]]
+source = "tailwind.config.js.hbs"
+destination = "{{project_name}}/tailwind.config.js"
+condition = "use_tailwind"
+
+[[files]]
+source = "postcss.config.js.hbs"
+destination = "{{project_name}}/postcss.config.js"
+condition = "use_tailwind"
+
+[[hooks]]
+command = "bun"
+args = ["install"]
+working_dir = "{{project_name}}"
+description = "Installing dependencies"
+
+[[hooks]]
+command = "git"
+args = ["init"]
+working_dir = "{{project_name}}"
+description = "Initializing git repository"

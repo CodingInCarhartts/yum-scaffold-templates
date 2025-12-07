@@ -1,0 +1,69 @@
+[metadata]
+name = "vite-ts-bun"
+description = "Vite + TypeScript + Bun starter template"
+version = "1.0.0"
+author = "Scaffold-CLI"
+tags = ["vite", "typescript", "bun", "html"]
+
+[variables.project_name]
+prompt = "Project name"
+type = "string"
+default = "my-vite-app"
+required = true
+
+[variables.description]
+prompt = "Project description"
+type = "string"
+default = "A Vite + TypeScript project"
+required = false
+
+[variables.use_tailwind]
+prompt = "Use Tailwind CSS?"
+type = "boolean"
+default = true
+
+[[files]]
+source = "package.json.hbs"
+destination = "{{project_name}}/package.json"
+
+[[files]]
+source = "index.html.hbs"
+destination = "{{project_name}}/index.html"
+
+[[files]]
+source = "vite.config.ts.hbs"
+destination = "{{project_name}}/vite.config.ts"
+
+[[files]]
+source = "tsconfig.json.hbs"
+destination = "{{project_name}}/tsconfig.json"
+
+[[files]]
+source = "src/main.ts.hbs"
+destination = "{{project_name}}/src/main.ts"
+
+[[files]]
+source = "src/style.css.hbs"
+destination = "{{project_name}}/src/style.css"
+
+[[files]]
+source = "tailwind.config.js.hbs"
+destination = "{{project_name}}/tailwind.config.js"
+condition = "use_tailwind"
+
+[[files]]
+source = "postcss.config.js.hbs"
+destination = "{{project_name}}/postcss.config.js"
+condition = "use_tailwind"
+
+[[hooks]]
+command = "bun"
+args = ["install"]
+working_dir = "{{project_name}}"
+description = "Installing dependencies"
+
+[[hooks]]
+command = "git"
+args = ["init"]
+working_dir = "{{project_name}}"
+description = "Initializing git repository"

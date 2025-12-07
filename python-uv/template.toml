@@ -1,0 +1,77 @@
+[metadata]
+name = "python-uv"
+description = "Python project with uv package manager and venv"
+version = "1.0.0"
+author = "Scaffold-CLI"
+tags = ["python", "uv", "venv"]
+
+[variables.project_name]
+prompt = "Project name"
+type = "string"
+default = "my-python-app"
+required = true
+
+[variables.description]
+prompt = "Project description"
+type = "string"
+default = "A Python project"
+required = false
+
+[variables.author]
+prompt = "Author name"
+type = "string"
+default = ""
+required = false
+
+[variables.python_version]
+prompt = "Python version"
+type = "string"
+default = "3.12"
+required = true
+
+[variables.use_pytest]
+prompt = "Include pytest for testing?"
+type = "boolean"
+default = true
+
+[[files]]
+source = "pyproject.toml.hbs"
+destination = "{{project_name}}/pyproject.toml"
+
+[[files]]
+source = "README.md.hbs"
+destination = "{{project_name}}/README.md"
+
+[[files]]
+source = ".gitignore.hbs"
+destination = "{{project_name}}/.gitignore"
+
+[[files]]
+source = "src/__init__.py.hbs"
+destination = "{{project_name}}/src/{{project_name}}/__init__.py"
+
+[[files]]
+source = "src/main.py.hbs"
+destination = "{{project_name}}/src/{{project_name}}/main.py"
+
+[[files]]
+source = "tests/__init__.py.hbs"
+destination = "{{project_name}}/tests/__init__.py"
+condition = "use_pytest"
+
+[[files]]
+source = "tests/test_main.py.hbs"
+destination = "{{project_name}}/tests/test_main.py"
+condition = "use_pytest"
+
+[[hooks]]
+command = "uv"
+args = ["venv"]
+working_dir = "{{project_name}}"
+description = "Creating virtual environment"
+
+[[hooks]]
+command = "uv"
+args = ["sync"]
+working_dir = "{{project_name}}"
+description = "Installing dependencies"

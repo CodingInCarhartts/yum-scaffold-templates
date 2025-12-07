@@ -1,0 +1,78 @@
+[metadata]
+name = "nextjs-shadcn"
+description = "Next.js 15 with Bun, TypeScript, Zod, Shadcn UI, and Tailwind CSS"
+version = "1.0.0"
+author = "Scaffold-CLI"
+tags = ["nextjs", "typescript", "bun", "shadcn", "tailwind", "zod"]
+
+[variables.project_name]
+prompt = "Project name"
+type = "string"
+default = "my-nextjs-app"
+required = true
+
+[variables.description]
+prompt = "Project description"
+type = "string"
+default = "A Next.js application"
+required = false
+
+[[files]]
+source = "package.json.hbs"
+destination = "{{project_name}}/package.json"
+
+[[files]]
+source = "tsconfig.json.hbs"
+destination = "{{project_name}}/tsconfig.json"
+
+[[files]]
+source = "next.config.ts.hbs"
+destination = "{{project_name}}/next.config.ts"
+
+[[files]]
+source = "tailwind.config.ts.hbs"
+destination = "{{project_name}}/tailwind.config.ts"
+
+[[files]]
+source = "postcss.config.mjs.hbs"
+destination = "{{project_name}}/postcss.config.mjs"
+
+[[files]]
+source = "components.json.hbs"
+destination = "{{project_name}}/components.json"
+
+[[files]]
+source = ".gitignore.hbs"
+destination = "{{project_name}}/.gitignore"
+
+[[files]]
+source = "src/app/globals.css.hbs"
+destination = "{{project_name}}/src/app/globals.css"
+
+[[files]]
+source = "src/app/layout.tsx.hbs"
+destination = "{{project_name}}/src/app/layout.tsx"
+
+[[files]]
+source = "src/app/page.tsx.hbs"
+destination = "{{project_name}}/src/app/page.tsx"
+
+[[files]]
+source = "src/lib/utils.ts.hbs"
+destination = "{{project_name}}/src/lib/utils.ts"
+
+[[files]]
+source = "src/components/ui/button.tsx.hbs"
+destination = "{{project_name}}/src/components/ui/button.tsx"
+
+[[hooks]]
+command = "bun"
+args = ["install"]
+working_dir = "{{project_name}}"
+description = "Installing dependencies"
+
+[[hooks]]
+command = "git"
+args = ["init"]
+working_dir = "{{project_name}}"
+description = "Initializing git repository"

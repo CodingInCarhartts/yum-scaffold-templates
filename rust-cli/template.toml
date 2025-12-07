@@ -1,0 +1,51 @@
+[metadata]
+name = "rust-cli"
+description = "Rust CLI application with Tokio and Serde"
+version = "1.0.0"
+author = "Scaffold-CLI"
+tags = ["rust", "cli", "tokio", "serde", "async"]
+
+[variables.project_name]
+prompt = "Project name"
+type = "string"
+default = "my-rust-app"
+required = true
+
+[variables.description]
+prompt = "Project description"
+type = "string"
+default = "A Rust CLI application"
+required = false
+
+[variables.add_logging]
+prompt = "Add logging (env_logger)?"
+type = "boolean"
+default = true
+
+[[files]]
+source = "Cargo.toml.hbs"
+destination = "{{project_name}}/Cargo.toml"
+
+[[files]]
+source = "src/main.rs.hbs"
+destination = "{{project_name}}/src/main.rs"
+
+[[files]]
+source = ".gitignore.hbs"
+destination = "{{project_name}}/.gitignore"
+
+[[files]]
+source = "README.md.hbs"
+destination = "{{project_name}}/README.md"
+
+[[hooks]]
+command = "cargo"
+args = ["build"]
+working_dir = "{{project_name}}"
+description = "Building project"
+
+[[hooks]]
+command = "git"
+args = ["init"]
+working_dir = "{{project_name}}"
+description = "Initializing git repository"
