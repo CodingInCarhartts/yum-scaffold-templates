@@ -2,7 +2,7 @@
 name = "solidjs-bun"
 description = "SolidStart with Bun, TypeScript, Tailwind, and Solid UI"
 version = "1.0.0"
-author = "Scaffold-CLI"
+author = "CodingInCarhartts-Yum"
 tags = ["solid", "solidstart", "typescript", "bun", "tailwind"]
 
 [variables.project_name]

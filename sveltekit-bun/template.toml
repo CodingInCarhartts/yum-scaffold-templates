@@ -2,7 +2,7 @@
 name = "sveltekit-bun"
 description = "SvelteKit with Bun, Svelte 5, and TypeScript"
 version = "1.0.0"
-author = "Scaffold-CLI"
+author = "CodingInCarhartts-Yum"
 tags = ["svelte", "sveltekit", "typescript", "bun"]
 
 [variables.project_name]
